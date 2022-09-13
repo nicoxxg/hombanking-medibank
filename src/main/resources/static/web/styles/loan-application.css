@@ -1,0 +1,668 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.formulario form{
+  margin-left: 1rem;
+}
+.fondo{
+  background-color: white;
+  flex-direction: column;
+  width: 35rem;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.amount{
+  margin-bottom: 1rem;
+}
+.list{
+  margin-bottom: 2rem;
+  width: 40rem !important;
+}
+.card-number{
+  display: flex;
+  
+}
+.card-number h3{
+  margin-top: 0.7rem;
+  font-size: 2rem;
+}
+
+.card-number .nombre p{
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  height: 3rem;
+  width: 24rem;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.card-number input{
+  margin: 0.5rem;
+  margin-bottom: 0rem !important;
+  height: 3rem;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  
+}
+.card-number input:focus{
+  border-color: #2691d9;
+  /* box-shadow: inset 0 0 3px #fb6aae; */
+}
+.card-number input::placeholder{
+  color: #999;
+  transition: all 0.3s ease;
+}
+.card-number input:focus::placeholder{
+  color: #b3b3b3;
+}
+
+form .field input[type="button"]{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: none;
+  background: none;
+  border: none;
+  color: #fff;
+  background-color: black;
+  padding-left: 0;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+.principal{
+    display: flex;
+    background-image: url(fondo.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.peque{
+  font-size: 0.8rem;
+}
+.contenedor-formulario{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+  height: 30rem;
+  background-color: white;
+  border: 0.1px solid rgb(167, 167, 167);
+  border-radius: 10px;
+}
+.formulario{
+  width: 25rem;
+  
+}
+.formulario form{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.cnt{
+    flex-direction: column;
+    width: 70%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contenedor-loans{
+    display: flex;
+    flex-direction: row !important;
+}
+.cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cont h2{
+  margin-bottom: 1rem;
+}
+.contenedor-select{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.758);
+    width: 18rem;
+    height: 8rem;
+    border-radius: 10px;
+    
+}
+.field{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .field input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+  }
+  .field input:focus{
+    border-color: #2691d9;
+    /* box-shadow: inset 0 0 3px #fb6aae; */
+  }
+  .field input::placeholder{
+    color: #999;
+    transition: all 0.3s ease;
+}
+.field input:focus::placeholder{
+    color: #b3b3b3;
+}
+ select{
+  height: 50px;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+ select {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+select :focus{
+  border-color: #2691d9;
+  /* box-shadow: inset 0 0 3px #fb6aae; */
+}
+select ::placeholder{
+  color: #999;
+  transition: all 0.3s ease;
+}
+form select :focus::placeholder{
+  color: #b3b3b3;
+}
+
+.carta {
+  position: relative;
+  width: 400px;
+  height: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  margin-bottom: 2rem !important;
+}
+
+
+
+.carta .view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: 1s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 1) 0px 3px 8px;
+  transform: perspective(500px) rotateY(0deg);
+}
+
+
+.contenido-frente-datos{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 5rem;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.contenedor-datos{
+  width: 100%;
+  height: 60%;
+  text-align: start;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5rem;
+}
+
+.contenedor-datos p{
+  margin-left: 1rem;
+}
+
+.fechas{
+  display: flex;
+  justify-content: center;
+}
+
+.fechas p{
+  margin-left: 1rem;
+}
+
+.contenedor-numero div h6{
+  margin-right: 1rem;
+}
+
+.contenedor-numero div{
+  display: flex;
+}
+
+.carta .front.tarjeta-normal{
+  background-image: url(/web/img/cartanueva.png);
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.carta .front.tarjeta-gold{
+  background-image: url(./img/cartaoronueva.png);
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.carta .front.tarjeta-platinum{
+  background-image: url(./img/nuevatitanium.png);
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.carta .front.tarjeta-silver{
+  background-image: url(./img/cartaplatinumnueva.png);
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.carta:hover .front {
+  transform: perspective(500px) rotateY(180deg);
+}
+
+.carta .back {
+  background-image: url(/web/img/parte-trasera.png);
+  background-size: cover;
+  border-radius: 10px;
+  transform: perspective(500px) rotateY(180deg);
+}
+
+.carta:hover .back {
+  transform: perspective(500px) rotateY(360deg);
+}
+
+.carta h2 {
+  width: 15rem;
+  height: 3.2rem;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  color: black;
+  text-align: center;
+  background-color: rgb(247, 194, 214);
+  text-transform: uppercase;
+  font-size: 1rem;
+  transform: perspective(500px) translateZ(50px);
+  display: flex;
+  justify-content: center;
+}
+.carta img {
+  width: 100%;
+}
+
+.carta p {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-shadow: black 1px 0.5px;
+  text-align: center;
+  transform: perspective(500px) translateZ(60px);
+}
+.carta h4 {
+  color: black;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  transform: perspective(500px) translateZ(50px);
+}
+.carta .link {
+  text-transform: uppercase;
+  transform: perspective(500px) translateZ(50px);
+}
+.link {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+@media (max-width: 768px){
+  .principal{
+      display: flex;
+      background-image: url(fondo.png);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 130vh;
+  }
+  .contenedor-select{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.758);
+    width: 28rem;
+    height: 8em;
+    border-radius: 10px;
+    
+  }
+  .cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5rem;
+    text-align: center;
+  }
+  .cont h2{
+    margin-bottom: 1rem;
+  }
+  .contenedor-loans{
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+  .contenedor-formulario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    height: 35rem;
+    margin-left: 5rem;
+    background-color: white;
+    border: 0.1px solid rgb(167, 167, 167);
+    border-radius: 10px;
+  }
+  .formulario{
+    width: 15rem;
+    
+  }
+}
+@media (max-width: 425px){
+  
+    .carta .front.tarjeta-normal{
+      background-image: url(/web/img/cartanueva.png);
+      width: 13rem;
+      height: 8rem;
+      background-size: cover;
+      border-radius: 10px;
+  }
+  .carta .front.tarjeta-gold{
+      width: 13rem;
+      height: 8rem;
+      background-image: url(./img/cartaoronueva.png);
+      background-size: cover;
+      border-radius: 10px;
+  }
+  .carta .front.tarjeta-platinum{
+      width: 13rem;
+      height: 8rem;
+      background-image: url(./img/nuevatitanium.png);
+      background-size: cover;
+      border-radius: 10px;
+  }
+  .carta .front.tarjeta-silver{
+      width: 13rem;
+      height: 8rem;
+      background-image: url(./img/cartaplatinumnueva.png);
+      background-size: cover;
+      border-radius: 10px;
+  }
+
+  .carta:hover .front {
+      transform: perspective(500px) rotateY(180deg);
+  }
+
+  .carta .back {
+      width: 13rem;
+      height: 8rem;
+      background-image: url(/web/img/parte-trasera.png);
+      background-size: cover;
+      border-radius: 10px;
+      transform: perspective(500px) rotateY(180deg);
+  }
+
+  .carta:hover .back {
+      transform: perspective(500px) rotateY(360deg);
+  }
+  .cnt{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 97%;
+      height: 100%;
+      margin-left: 0.5rem;
+  }
+  .contenedor-principal{
+      background-color: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      overflow: hidden;
+      overflow-y: scroll;
+      height: 45rem;
+      margin-left: 7rem !important;
+      width: 18rem !important;
+      border-radius: 20px;
+  }
+  .btnn{
+      margin-right: 1rem;
+      margin-left: 20rem;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: rgb(255, 255, 255);
+      font-size: 2rem;
+      color: black;
+  }
+  .carta {
+      position: relative;
+      width: 10rem !important;
+      background-size: cover;
+      height: 220px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      margin-bottom: 1rem !important;
+  }
+  .contenedor-numero div h6{
+      margin-right: 1rem;
+      font-size: 0.7rem;
+  }
+  .contenedor-numero h3{
+      font-size: 1rem;
+  }
+  .fechas p{
+      font-size: 0.7rem;
+  }
+  .name{
+      position: relative;
+      bottom: 1rem;
+      font-size: 0.6rem !important;
+
+  }
+  .carta h4{
+      font-size: 0.7rem;
+  }
+  .formulario form{
+    margin-left: 1rem;
+  }
+  .fondo{
+    background-color: white;
+    flex-direction: column;
+    width: 25rem;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+  }
+  .amount{
+    margin-bottom: 1rem;
+  }
+  .list{
+    margin-bottom: 2rem;
+    width: 40rem !important;
+  }
+  .card-number{
+    display: flex;
+    
+  }
+  .card-number h3{
+    margin-top: 0.7rem;
+    font-size: 2rem;
+  }
+  
+  .card-number .nombre p{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    height: 3rem;
+    width: 14rem;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+  }
+  .card-number input{
+    margin: 0.5rem;
+    margin-bottom: 0rem !important;
+    height: 3rem;
+    width: 3rem;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    
+  }
+  .card-number input:focus{
+    border-color: #2691d9;
+    /* box-shadow: inset 0 0 3px #fb6aae; */
+  }
+  .card-number input::placeholder{
+    color: #999;
+    transition: all 0.3s ease;
+  }
+  .card-number input:focus::placeholder{
+    color: #b3b3b3;
+  }
+  
+  .principal{
+      display: flex;
+      background-image: url(fondo.png);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 130vh;
+  }
+  .contenedor-select{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.758);
+    width: 18rem;
+    height: 6rem;
+    border-radius: 10px;
+    
+  }
+  .cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5rem;
+    text-align: center;
+  }
+  .cont h2{
+    margin-bottom: 1rem;
+  }
+  .contenedor-loans{
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+  .contenedor-formulario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    height: 35rem;
+    margin-left: 5rem;
+    background-color: white;
+    border: 0.1px solid rgb(167, 167, 167);
+    border-radius: 10px;
+  }
+  .formulario{
+    width: 15rem;
+    
+  }
+}

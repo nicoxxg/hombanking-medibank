@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/menu.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="navigator">
+                
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="home-outline"></ion-icon></span>
+                            <span class="titulo">mediabnk</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="person-circle-outline"></ion-icon></span>
+                            <span class="titulo">{{datos.name}} {{datos.lastName}}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./accounts.html">
+                            <span class="icono"><ion-icon name="cash-outline"></ion-icon></span>
+                            <span class="titulo">accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./card.html">
+                            <span class="icono"><ion-icon name="card-outline"></ion-icon></span>
+                            <span class="titulo">credit card</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./loan-application.html">
+                            <span class="icono"><ion-icon name="trending-up-outline"></ion-icon></span>
+                            <span class="titulo">create loan</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./transfer.html">
+                            <span class="icono"><ion-icon name="people-outline"></ion-icon></span>
+                            <span class="titulo">transfer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/postnet.html">
+                            <span class="icono"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                            <span class="titulo">postnet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" @click="logOut()">
+                            <span class="icono"><ion-icon name="log-in-outline"></ion-icon></span>
+                            <span class="titulo">log out</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <div class="toggle">
+                </div>
+            </div>
+            
+                <h1>your transactions</h1>
+
+                <div class="tablas ">
+                    <div class="container table-responsive py-5"> 
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                <th scope="col">Transaction Id</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Amount Due</th>
+                                <th scope="col">Payment Status</th>
+                                </tr>
+                            </thead>
+                            <tbody v-if="transactions.length > 0">
+                                <tr v-for="transaction in transactions">
+                                    <td scope="row">{{transaction.id}}</td>
+                                    <td>{{transaction.date.split("T")[0]}}</td>
+                                    <td>{{transaction.amount}}</td>
+                                    <td v-if="transaction.type == 'CREDITO'" class="text-primary" > {{transaction.type}}</td>
+                                    <td v-else class="text-danger" >{{transaction.type}}</td> 
+                                </tr>
+
+                                
+                            </tbody>
+                            <tbody v-else>
+                                <td>you don't have any transaction</td>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <canvas id="myChart" width="200" height="100">
+                                
+                    </canvas>
+
+            
+            
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://kit.fontawesome.com/db55518b9d.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+
+<script src="./js/account.js"></script>
+<script src="./js/accountVanilla.js"></script>
+    <script>
+
+    let ctx = document.getElementById('myChart').getContext("2d")
+    var myChart = new Chart(ctx,{
+        type:"bar",
+            data:{
+            datasets:[
+                {
+                
+                label: "credito",
+                backgroundColor: ["blue"],
+            },
+            {
+                label: "debito",
+                backgroundColor: ["red"],
+            } ]
+        }
+    })
+    function char(){
+        var idCuenta = location.search.split("?id=").join("")
+        return axios.get(`/api/clients/current`)
+        .then((response) => {
+            let accounts =response.data.accounts
+            console.log(accounts)
+            console.log(idCuenta)
+            let account = accounts.filter((account) => account.id == idCuenta)[0]
+            console.log(account)
+            let transacciones = account.transactions
+            console.log(transacciones)
+            transacciones.forEach(response => {
+                myChart.data['labels'].push(response.type)
+                if (response.type == "CREDITO") {
+                    myChart.data['datasets'][0].data.push(response.amount)
+                }else{
+                    myChart.data['datasets'][1].data.push(response.amount)
+                }
+                
+            });
+        })
+    }
+    char()
+    </script>
+
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW({
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // default
+        offset:       0,          // default
+        mobile:       true,       // default
+        live:         true        // default
+    }).init();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

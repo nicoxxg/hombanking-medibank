@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./principal/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="contenedor-principal">
+            <div class="wrapper">
+                <div class="title-text">
+                    <div class="title login">
+                        Login
+                    </div>
+                    <div class="title signup">
+                        Signup
+                    </div>
+                </div>
+                <div class="form-container">
+                <div class="slide-controls">
+                        <input type="radio" name="slide" id="login" checked>
+                        <input type="radio" name="slide" id="signup">
+                        <label for="login" class="slide login">Login</label>
+                        <label for="signup" class="slide signup">Signup</label>
+                        <div class="slider-tab"></div>
+                </div>
+                <div class="form-inner">
+                        <form action="#" class="login">
+                            <div class="txt-login">
+                                <input v-model="formLogin.email" type="text" required>
+                                <span></span>
+                                <label>Email Address</label>
+                            </div>
+                            <div class="txt-login">
+                                <input type="password"  v-model="formLogin.password" required>
+                                <label>password</label> 
+                                <span ></span>
+                            </div>
+                            <div class="pass-link">
+                                <a href="#">Forgot password?</a>
+                            </div>
+                            <div class="field btn">
+                                <div class="btn-layer"></div>
+                                <input type="submit" @click.prevent="login()" value="Login">
+                            </div>
+                            <div class="signup-link">
+                                Not a member? <a href="">Signup now</a>
+                            </div>
+                        </form>
+                        <form action="#" class="signup">
+                            <div class="field">
+                                <input type="text" placeholder="Name" v-model="formRegister.name" required>
+                            </div>
+                            <div class="field ">
+                                <input type="text" v-model="formRegister.lastName" required placeholder="Last Name" required>
+                            </div>
+                            <div class="field email">
+                                <!-- <div v-if="this.errorEmail = true">
+                                    <p class="colores">{{this.messageError}}</p>
+                                </div> -->
+                                <input type="text" v-model="formRegister.email" placeholder="Email" required>
+                            </div>
+                            <div class="field inputBox">
+                                <input type="password" id="pswrd" v-model="formRegister.password" onkeyup="checkPassword(this.value)" placeholder="password" required>
+                                <span id="toggleBtn"></span>
+                            </div>
+                            <div class="field btn">
+                                <div class=" btn-layerr btn-layerr"></div>
+                                <input type="submit" id="submit" disabled @click.prevent="register()" value="Signup">
+                            </div>
+                            <div class="validator">
+                                <ul>
+                                    <!-- <li id="lower">At least one lowercase character</li> -->
+                                    <li id="upper">At the least one uppercase</li>
+                                    <li id="number">At least one number</li>
+                                    <!-- <li id="special">At least one special character</li> -->
+                                    <li id="length">At least 8 characters</li>
+                                </ul>
+                            </div>
+                        </form>
+                </div>
+                </div>
+            </div>
+            <div v-if="this.errorEmail == true" class="mensaje colores">
+                <h3>{{this.messageError}}</h3>
+            </div>
+            <div v-else-if="this.emailIncompleto == true" class="mensaje colores">
+                <h3>please put a valid email</h3>
+            </div>
+            <div v-else-if="this.errorLogin == true" class="mensaje colores">
+                <h3>invalid email or password</h3>
+            </div>
+            
+            
+        </div>
+
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+<script src="https://kit.fontawesome.com/db55518b9d.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="./login.js"></script>
+<script>
+    //input
+    let pswrd = document.getElementById("pswrd");
+    let toggleBtn = document.getElementById("toggleBtn");
+    let submit = document.getElementById("submit");
+    // validador
+    let lowerCase = document.getElementById("lower");
+    let upperCase = document.getElementById("upper");
+    let digit = document.getElementById("number");
+    let specialChar = document.getElementById("special");
+    let minLength = document.getElementById("length");
+
+    
+
+    function checkPassword(data){
+        const lower = new RegExp('(?=.*[a-z])')
+        const upper = new RegExp('(?=.*[A-Z])')
+        const number = new RegExp('(?=.*[0-9])')
+        const special = new RegExp('(?=.*[!@#\$%\^&\*\-\_\.\:\;\,\+\])')
+        const length = new RegExp('(?=.{8,})')
+        let upperCheck = false;
+        let numberCheck = false;
+        let lengthCheck = false;
+        if (upper.test(data)) {
+            
+            upperCase.classList.add('valid');
+            upperCheck = true
+        }else{
+            
+            upperCase.classList.remove('valid');
+            upperCheck = false
+        };
+        if (number.test(data)) {
+            numberCheck = true
+            digit.classList.add('valid');
+        }else{
+            numberCheck = false
+            digit.classList.remove('valid');
+        };
+        
+        if (length.test(data)) {
+            lengthCheck = true
+            minLength.classList.add('valid');
+        }else{
+            lengthCheck = false
+            minLength.classList.remove('valid');
+        };
+        if(upperCheck == true && numberCheck == true && lengthCheck == true){
+            submit.removeAttribute('disabled');
+            submit.style.background = '-webkit-linear-gradient(right, #2691d9, #42f1fa, #2691d9)'
+        }else{
+            submit.setAttribute('disabled', 'disabled');
+            submit.style.background = 'rgb(128, 128, 128)'
+        };
+        //validator lower
+        /*
+        if (lower.test(data)) {
+            
+            lowerCase.classList.add('valid');
+            let lowerCheck = true
+        }else{
+            
+            lowerCase.classList.remove('valid');
+            lowerCheck = false
+        }*/
+        //validator upper
+        /*
+        if (special.test(data)) {
+            let specialCheck = true
+            specialChar.classList.add('valid');
+        }else{
+            specialCheck = false
+            specialChar.classList.remove('valid');
+        } */
+    }
+
+    //mostrar y ocultar contraseña
+    toggleBtn.onclick = function() {
+        if (pswrd.type === 'password') {
+            pswrd.setAttribute('type', 'text');
+            toggleBtn.classList.add('hidden');
+
+        }else{
+            pswrd.setAttribute('type', 'password'); 
+            toggleBtn.classList.remove('hidden');
+        }
+    }
+    // login y register
+    const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (()=>{
+            loginForm.style.marginLeft = "-50%";
+            loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (()=>{
+            loginForm.style.marginLeft = "0%";
+            loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (()=>{
+            signupBtn.click();
+            return false;
+        });
+</script>
+
+</body>
+</html>

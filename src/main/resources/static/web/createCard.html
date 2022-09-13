@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cardcreate.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        
+                <div class="principal">
+                    <div class="cnt">
+                        <div>
+
+                            <div class="carta">
+                                <div v-if="this.color == 'NORMAL'" class="view front tarjeta-normal">
+                                    
+                                    <div class="contenido-frente-datos">
+                                        <div>
+                                            
+                                        </div>
+                                        <div class="contenedor-numero">
+                                            <h3>1234-5678-9101-1123</h3>
+                                            <div>
+                                                <h6>{{this.color}}</h6>
+                                                <div v-if="this.type == 'CREDIT'">   
+                                                    <h6 >CREDIT</h6>
+                                                </div>
+                                                <div v-else-if="this.type == 'DEBIT'">
+                                                    <h6 >DEBIT</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="contenedor-datos">
+                                            <div class="fechas">
+                                                <p>11-11</p>
+                                                <p>11-16</p>
+                                            </div>
+                                            
+                                            <p class="name">{{this.datos.name}} {{this.datos.lastName}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div v-else-if="this.color == 'GOLD'" class="view front tarjeta-gold">
+                                    
+                                    <div class="contenido-frente-datos">
+                                        <div>
+                                            
+                                        </div>
+                                        <div class="contenedor-numero">
+                                            <h3>1234-5678-9101-1123</h3>
+                                            <div>
+                                                <h6>{{this.color}}</h6>
+                                                <div v-if="this.type == 'CREDIT'">   
+                                                    <h6 >CREDIT</h6>
+                                                </div>
+                                                <div v-else-if="this.type == 'DEBIT'">
+                                                    <h6 >DEBIT</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="contenedor-datos">
+                                            <div class="fechas">
+                                                <p>11-11</p>
+                                                <p>11-16</p>
+                                            </div>
+                                            
+                                            <p class="name"> {{this.datos.name}} {{this.datos.lastName}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div v-else-if="this.color == 'TITANIUM'" class="view front tarjeta-platinum">
+                                    
+                                    <div class="contenido-frente-datos">
+                                        <div>
+                                            
+                                        </div>
+                                        <div class="contenedor-numero">
+                                            <h3>1234-5678-9101-1123</h3>
+                                            <div>
+                                                <h6>{{this.color}}</h6>
+                                                <div v-if="this.type == 'CREDIT'">   
+                                                    <h6 >CREDIT</h6>
+                                                </div>
+                                                <div v-else-if="this.type == 'DEBIT'">
+                                                    <h6 >DEBIT</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="contenedor-datos">
+                                            <div class="fechas">
+                                                <p>11-11</p>
+                                                <p>11-16</p>
+                                            </div>
+                                            
+                                            <p class="name">{{this.datos.name}} {{this.datos.lastName}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div v-else-if="this.color == 'SILVER'" class="view front tarjeta-silver" >
+                                    
+                                    <div class="contenido-frente-datos">
+                                        <div>
+                                            
+                                        </div>
+                                        <div class="contenedor-numero">
+                                            <h3>1234-5678-9101-1123</h3>
+                                            <div>
+                                                <h6>{{this.color}}</h6>
+                                                <div v-if="this.type == 'CREDIT'">   
+                                                    <h6 >CREDIT</h6>
+                                                </div>
+                                                <div v-else-if="this.type == 'DEBIT'">
+                                                    <h6 >DEBIT</h6>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="contenedor-datos">
+                                            <div class="fechas">
+                                                <p>11-11</p>
+                                                <p>11-16</p>
+                                            </div>
+                                            
+                                            <p class="name">{{this.datos.name}} {{this.datos.lastName}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div v-if="this.color" class="view back">
+                                    <div>
+                                        <h4>
+                                            123
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                    <div field>
+                                        <select class="select"  v-model="color">
+                                            <option disabled value=""> please select a color</option>
+                                            <option value="NORMAL"> normal</option>
+                                            <option value="SILVER"> silver</option>
+                                            <option value="GOLD"> gold</option>
+                                            <option value="TITANIUM">titanium</option>
+                                        </select>
+                
+                                        <select class="select" v-model="type" >
+                                            
+                                            <option value="" disabled> please select a type</option>
+                                            <option value="CREDIT">credit</option>
+                                            <option value="DEBIT">debit</option>
+                                        </select>
+                                        
+                                            <input class="select" class="button" type="button" value="send" @click="createCards()" >
+                                        
+                
+                                        
+                                    </div>
+                                    
+                            </div>
+                            
+                            
+                            <div v-if="this.error == true" class="mensaje colores">
+                                <h3>{{this.messageError}}</h3>
+                            </div>
+                            <div v-else-if="this.errorRequest == true" class="mensaje colores">
+                                <h3>please complete the requested information</h3>
+                            </div>
+                        </div>
+                       
+                            
+                        
+                    </div>
+                </div>
+
+                
+                
+            </div>
+
+            
+            <div class="navigator">
+                
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="home-outline"></ion-icon></span>
+                            <span class="titulo">mediabnk</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="person-circle-outline"></ion-icon></span>
+                            <span class="titulo">{{datos.name}} {{datos.lastName}}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./accounts.html">
+                            <span class="icono"><ion-icon name="cash-outline"></ion-icon></span>
+                            <span class="titulo">accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./card.html">
+                            <span class="icono"><ion-icon name="card-outline"></ion-icon></span>
+                            <span class="titulo">credit card</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./loan-application.html">
+                            <span class="icono"><ion-icon name="trending-up-outline"></ion-icon></span>
+                            <span class="titulo">create loan</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./transfer.html">
+                            <span class="icono"><ion-icon name="people-outline"></ion-icon></span>
+                            <span class="titulo">transfer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/postnet.html">
+                            <span class="icono"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                            <span class="titulo">postnet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" @click="logOut()">
+                            <span class="icono"><ion-icon name="log-in-outline"></ion-icon></span>
+                            <span class="titulo">log out</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <div class="toggle">
+                </div>
+            </div>
+    </div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/db55518b9d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./js/createCards.js"></script>
+    <script src="./js/accountVanilla.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

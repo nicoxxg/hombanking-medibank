@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/web/styles/menu.css">
+    <link rel="stylesheet" href="/web/styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+    <div id="app">
+        <div class="navigator">
+                
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icono"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="titulo">mediabnk</span>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="#">
+                        <span class="icono"><ion-icon name="person-circle-outline"></ion-icon></span>
+                        <span class="titulo">{{datos.name}} {{datos.lastName}}</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="./accounts.html">
+                        <span class="icono"><ion-icon name="cash-outline"></ion-icon></span>
+                        <span class="titulo">accounts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./card.html">
+                        <span class="icono"><ion-icon name="card-outline"></ion-icon></span>
+                        <span class="titulo">credit card</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./loan-application.html">
+                        <span class="icono"><ion-icon name="trending-up-outline"></ion-icon></span>
+                        <span class="titulo">create loan</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="./transfer.html">
+                        <span class="icono"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="titulo">transfer</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icono"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                        <span class="titulo">Agree and conditions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icono"><ion-icon name="call-outline"></ion-icon></span>
+                        <span class="titulo">contact Us</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" @click="logOut()">
+                        <span class="icono"><ion-icon name="log-in-outline"></ion-icon></span>
+                        <span class="titulo">log out</span>
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="toggle">
+            </div>
+        </div>
+        <div class="container d-flex">
+
+            
+            <div>
+
+                    <h1>base de datos</h1>
+                    <a href="/web/accounts.html">ir a accounts</a>
+                    <a href="/admin/crear-prestamos.html">crear loan</a>
+                    
+                    <div class="formulario">
+                        <form>
+                            <h2>agregar datos al servidor</h2>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">name</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" v-model="form.name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">last name</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" v-model="form.lastName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="form.email" required>
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div v-if="botonEditar == true">
+                                <button type="button" class="btn btn-primary" @click="agregarYeditar()" >change</button>
+                            </div>
+                            <div v-else>
+                                <button type="button" class="btn btn-primary" @click="agregarYeditar()" >submit</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="tablas">
+                        <table class="table">
+                            <h2>mostrados en tabla</h2>
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="tabla in clientes">
+                                    <td>{{tabla.id}}</td>
+                                    <td>{{tabla.name}}</td>
+                                    <td>{{tabla.lastName}} </td>
+                                    <td>{{tabla.email}} </td>
+                                    <td>
+                                        <button @click="mostrarCuentas(tabla.id)">mostrar cuentas</button>
+                                    </td>
+                                    <td> <button @click="eliminar(tabla.id)" >eliminar</button> </td>
+                                    <td> <button @click="editar(tabla.id)" >editar</button> </td>
+                                    <td> <a :href="'web/accounts.html?id='+tabla.id">estado de cuentas</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>balance</th>
+                                    <th>number</th>
+                                    <th>creation date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="cuentas in cuentasMostradas">
+                                    <th>{{cuentas.id}}</th>
+                                    <th>{{cuentas.balance}}</th>
+                                    <th>{{cuentas.number}}</th>
+                                    <th>{{cuentas.creationDate}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+            </div>
+            <div>
+                <h2>datos del servidor</h2>
+                <pre>{{clientes}}</pre>
+            </div>
+            
+            
+        </div>
+    
+    </div>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="./vue.js"></script>
+
+<script src="/web/js/accountVanilla.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://kit.fontawesome.com/db55518b9d.js" crossorigin="anonymous"></script>  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

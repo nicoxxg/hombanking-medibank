@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/menu.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        
+        <div class="principal">
+
+            <div class="navigator">
+                
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="home-outline"></ion-icon></span>
+                            <span class="titulo">mediabnk</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="person-circle-outline"></ion-icon></span>
+                            <span class="titulo">{{datos.name}} {{datos.lastName}}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./accounts.html">
+                            <span class="icono"><ion-icon name="cash-outline"></ion-icon></span>
+                            <span class="titulo">accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./card.html">
+                            <span class="icono"><ion-icon name="card-outline"></ion-icon></span>
+                            <span class="titulo">credit card</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./loan-application.html">
+                            <span class="icono"><ion-icon name="trending-up-outline"></ion-icon></span>
+                            <span class="titulo">create loan</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./transfer.html">
+                            <span class="icono"><ion-icon name="people-outline"></ion-icon></span>
+                            <span class="titulo">transfer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/postnet.html">
+                            <span class="icono"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                            <span class="titulo">postnet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" @click="logOut()">
+                            <span class="icono"><ion-icon name="log-in-outline"></ion-icon></span>
+                            <span class="titulo">log out</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <div class="toggle">
+                </div>
+            </div>
+            
+
+
+            <div class="cnt">
+                
+                    <div class="container contenedor-principal" >
+                            
+                        
+                        <div class="contenedor-tarjetas">
+                                <div v-if="accounts.length == 0" class="plata">
+                                    <div class="plata-datos">
+                                        <h3>
+                                            
+                                            you dont have any account
+                                        </h3>
+                                        
+                                    </div>
+                                    <div>
+                                        please create a new account
+                                    </div>
+
+                                    <a href="#" @click="createAccount()">
+                                        here
+                                    </a>
+                                    
+                                    
+                                </div>
+                            
+                                <div v-for="account in accounts" class="plata">
+                                    <div class="delete" @click="deleteAccount(account.id)">
+                                        <ion-icon name="trash"></ion-icon>
+                                    </div>
+                                    <div class="plata-datos">
+                                        <h2>
+                                            
+                                            ${{account.balance}}
+                                        </h2>
+                                        
+                                    </div>
+                                    <div class="plata-datos">
+                                        <h3>
+                                            {{account.number}}
+                                        </h3>
+                                        <h4 v-if="account.accountType == 'corriente'">common</h4>
+                                        <h4 v-else >saving</h4>
+                                    </div>
+
+                                    <a :href="'account.html?id='+account.id">
+                                        transactions
+                                    </a>
+                                </div>
+                        </div>
+                            
+                    
+                        <div class="datos-usuario">
+                            <div class="contenedor-usuario">
+                                
+                            </div>
+                            <div class="datos-container">
+                                <div class="totalbalance">
+                                    
+                                    <div  v-if="this.accounts.length < 3">
+                                        <div class="btnn" @click="createAccount()">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <p>create a new account</p>
+                                        </div>
+                                        
+                                    </div>
+                                    <h2 v-else>your total <b>balance</b> ${{totalBalance}} </h2>
+                                    <canvas id="balance"></canvas>
+                                </div>
+                                <div>
+                                    <div class="contenedor-loans">
+                                        <h3>all your transaction</h3>
+                                        <div class="todos-loans" >
+                                            <div class="loans-container" v-for="transaction in lastTransaction">
+                                                <h4 v-if="transaction.type == 'CREDITO'" class="text-primary" >{{transaction.type}}</h4>
+                                            <h4 v-else class="text-danger">
+                                                {{transaction.type}}</h4>
+                                            <div class="loanCard">
+                                                    <p>amount: ${{transaction.amount}}</p>
+                                                    <td>{{ transaction.description}}</td>
+                                            </div>
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="contenedor-loans">
+                                    <h3>your loans</h3>
+                                    <div class="todos-loans">
+                                        
+                                        <div class="loans-container" v-for="loan in loans">
+                                            <h4>loan: {{loan.name}}</h4>
+                                            <div class="loanCard">
+                                                <p>you will pay ${{loan.amountPayment.toFixed(2)}} for {{loan.payments}} months</p>
+                                                <td>your amount${{loan.amount}}</td>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+            </div>    
+        </div>
+        
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/db55518b9d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./js/accounts.js"></script>
+    <script src="./js/accountVanilla.js"></script>
+
+    <script>
+        let balance = document.getElementById('balance').getContext("2d")
+        var myChartBalance = new Chart(balance,{
+            type:"doughnut",
+                data:{
+                datasets:[
+                    {
+                    label: "balance",
+                    backgroundColor: ['rgb(202,229,196)', '#fdf8be', 'rgb(246,171,175)', 'rgb(214,225,252)'],
+                }
+            ]
+            },
+            options:{
+                scales:{
+                    yAxes:[{
+                            ticks:{
+                                beginAtZero:true
+                            }
+                    }]
+                }
+            }
+        })
+        function charBalance(){
+            return axios.get(`/api/clients/current/accounts`)
+            .then((response) => {
+                let transacciones = response.data.sort((a,b) => a.balance - b.balance)
+                transacciones.forEach(response => {
+                    
+                    myChartBalance.data['labels'].push(response.number)
+                    myChartBalance.data['datasets'][0].data.push(response.balance)
+                });
+            })
+        }
+        charBalance()
+
+        </script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./card.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        
+                <div class="principal">
+                    
+                    <div class="cnt">
+                        <div class="contenedor-botones">
+                            <a class="btnn" href="./createCard.html"><i class="fa-solid fa-plus"></i> <p>create card</p> </a>
+                        </div>
+                        <div class="container contenedor-principal" >
+                            
+                            
+                            <div class="contenedor-tarjeta-boton" v-for="card in cards">
+
+                                <div  class="carta">
+                                
+                                    <div :class="[card.color == 'NORMAL' ? 'view front tarjeta-normal' : card.color == 'SILVER' ? 'view front tarjeta-silver' : card.color == 'GOLD' ? 'view front tarjeta-gold' : 'view front tarjeta-platinum'] ">
+                                        
+                                        <div class="contenido-frente-datos">
+                                            <div>
+                                                
+                                            </div>
+                                            <div class="contenedor-numero">
+                                                <h3>{{card.number}}</h3>
+                                                <div>
+                                                    <h6>{{card.color}}</h6>
+                                                    <h6>{{card.type}}</h6>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="contenedor-datos">
+                                                <div class="fechas">
+                                                    
+                                                    <div v-if="card.fromDate.split('-')[0] > Date">
+                                                        <p class="text-danger" >{{card.thruDate}}</p>
+                                                    </div>
+                                                    <div v-else>
+                                                        <p >{{card.thruDate}}</p>
+                                                    </div>
+                                                    <div v-if="card.fromDate.split('-')[0] > Date">
+                                                        <p class="text-danger" >{{card.fromDate}}</p>
+                                                    </div>
+                                                    <div v-else>
+                                                        <p >{{card.fromDate}}</p>
+                                                    </div>
+                                                   
+                                                    
+                                                </div>
+                                                
+                                                <p class="name">{{card.cardHolder}}</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div  class="view back">
+                                        <div>
+                                            <h4>
+                                                {{card.cvv}}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="delete" @click="deleteCard(card.id)">
+                                    <ion-icon name="trash"></ion-icon>
+                                </div>
+                            </div>
+                            
+                        </div>
+                </div>
+
+                
+                
+            </div>
+
+           
+            <div class="navigator">
+                
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="home-outline"></ion-icon></span>
+                            <span class="titulo">mediabnk</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="#">
+                            <span class="icono"><ion-icon name="person-circle-outline"></ion-icon></span>
+                            <span class="titulo">{{datos.name}} {{datos.lastName}}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./accounts.html">
+                            <span class="icono"><ion-icon name="cash-outline"></ion-icon></span>
+                            <span class="titulo">accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./card.html">
+                            <span class="icono"><ion-icon name="card-outline"></ion-icon></span>
+                            <span class="titulo">credit card</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./loan-application.html">
+                            <span class="icono"><ion-icon name="trending-up-outline"></ion-icon></span>
+                            <span class="titulo">create loan</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="./transfer.html">
+                            <span class="icono"><ion-icon name="people-outline"></ion-icon></span>
+                            <span class="titulo">transfer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/postnet.html">
+                            <span class="icono"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                            <span class="titulo">postnet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" @click="logOut()">
+                            <span class="icono"><ion-icon name="log-in-outline"></ion-icon></span>
+                            <span class="titulo">log out</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <div class="toggle">
+                </div>
+            </div>
+    </div> 
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/db55518b9d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./js/card.js"></script>
+    <script src="./js/accountVanilla.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

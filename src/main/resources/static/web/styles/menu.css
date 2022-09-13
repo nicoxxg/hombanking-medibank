@@ -1,0 +1,437 @@
+
+.navigator{
+    position: fixed;
+    inset: 20px;
+    background-color: #67b9b1;
+    color: white;
+    border-left: 1px;
+    width: 100px; 
+    border-radius: 90px;
+    overflow: hidden;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 05);
+    transition: 0.5s;
+}
+
+.navigator.active{
+    width: 350px;
+    border-radius: 20px;
+}
+
+.toggle{
+    
+    position: absolute;
+    bottom: 15px;
+    right: 23px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 15);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.toggle::before{
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 4px;
+    border-radius: 7px;
+    background-color: rgb(97, 97, 97);
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+.toggle::after{
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 4px;
+    border-radius: 7px;
+    background-color: rgb(97, 97, 97);
+    transform: translateY(5px);
+    transition: 0.5s;
+}
+.navigator.active .toggle::before{
+    transform: translateY(0px) rotate(-405deg);
+}
+.navigator.active .toggle::after{
+    transform: translateY(0px) rotate(225deg);
+}
+.navigator ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navigator ul li{
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    /* background-color: #fff; */
+}
+.navigator ul li:hover{
+    width: 100%;
+    border-right: 120px;
+    background-color: #fff;
+    color: black;
+}
+.navigator ul li:nth-child(1){
+    top: 20px;
+    margin-bottom: 60px;
+    background: none;
+}
+
+.navigator ul li:hover:not(:first-child) a{
+    color: rgb(97, 97, 97);
+}
+
+.navigator ul li:not(:first-child):hover::before{
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-bottom-right-radius: 20px;
+    box-shadow: 7.5px 7.5px 0px 7.5px white;
+}
+.navigator ul li:not(:first-child):hover::after{
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 7.5px -7.5px 0px 7.5px white;
+}
+.navigator ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: black;
+
+}
+.navigator ul li a .icono{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: start;
+}
+.navigator ul li a .icono ion-icon{
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+.navigator ul li a .titulo{
+    position: relative;
+    display: block;
+    padding: 0px 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+@media (max-width: 768px) {
+    .navigator{
+        margin-top: 1rem;
+        position: fixed;
+        inset: 1px;
+        background-color: #67b9b1;
+        color: white;
+        border-left: 1px;
+        width: 100px;
+        height: 95vh;
+        border-radius: 90px;
+        overflow: hidden;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 05);
+        transition: 0.5s;
+    }
+    
+    .navigator.active{
+        width: 320px;
+        border-radius: 20px;
+    }
+    
+    .toggle{
+        
+        position: absolute;
+        bottom: 15px;
+        right: 23px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 15);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .toggle::before{
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 4px;
+        border-radius: 7px;
+        background-color: rgb(97, 97, 97);
+        transform: translateY(-5px);
+        transition: 0.5s;
+    }
+    .toggle::after{
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 4px;
+        border-radius: 7px;
+        background-color: rgb(97, 97, 97);
+        transform: translateY(5px);
+        transition: 0.5s;
+    }
+    .navigator.active .toggle::before{
+        transform: translateY(0px) rotate(-405deg);
+    }
+    .navigator.active .toggle::after{
+        transform: translateY(0px) rotate(225deg);
+    }
+    .navigator ul{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .navigator ul li{
+        position: relative;
+        list-style: none;
+        width: 100%;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        /* background-color: #fff; */
+    }
+    .navigator ul li:hover{
+        width: 100%;
+        border-right: 120px;
+        background-color: #fff;
+        color: black;
+    }
+    .navigator ul li:nth-child(1){
+        top: 20px;
+        margin-bottom: 60px;
+        background: none;
+    }
+    
+    .navigator ul li:hover:not(:first-child) a{
+        color: rgb(97, 97, 97);
+    }
+    
+    .navigator ul li:not(:first-child):hover::before{
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border-bottom-right-radius: 20px;
+        box-shadow: 7.5px 7.5px 0px 7.5px white;
+    }
+    .navigator ul li:not(:first-child):hover::after{
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border-top-right-radius: 20px;
+        box-shadow: 7.5px -7.5px 0px 7.5px white;
+    }
+    .navigator ul li a{
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: white;
+    
+    }
+    .navigator ul li a .icono{
+        position: relative;
+        display: block;
+        min-width: 60px;
+        height: 60px;
+        line-height: 70px;
+        text-align: start;
+    }
+    .navigator ul li a .icono ion-icon{
+        font-size: 1.5rem;
+        margin-left: 0.5rem;
+    }
+    .navigator ul li a .titulo{
+        position: relative;
+        display: block;
+        padding: 0px 10px;
+        height: 60px;
+        line-height: 60px;
+        text-align: start;
+        white-space: nowrap;
+    }
+}
+@media (max-width: 425px) {
+    .navigator{
+        margin-top: 1rem;
+        position: fixed;
+        inset: 0px;
+        background-color: #67b9b1;
+        color: white;
+        border-left: 1px;
+        width: 80px;
+        height: 95vh;
+        border-radius: 90px;
+        overflow: hidden;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 05);
+        transition: 0.5s;
+    }
+    
+    .navigator.active{
+        width: 320px;
+        border-radius: 20px;
+    }
+    .navigator ul{
+        margin-left: -2rem;
+    }
+    
+    .toggle{
+        
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 15);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .toggle::before{
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 4px;
+        border-radius: 7px;
+        background-color: rgb(97, 97, 97);
+        transform: translateY(-5px);
+        transition: 0.5s;
+    }
+    .toggle::after{
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 4px;
+        border-radius: 7px;
+        background-color: rgb(97, 97, 97);
+        transform: translateY(5px);
+        transition: 0.5s;
+    }
+    .navigator.active .toggle::before{
+        transform: translateY(0px) rotate(-405deg);
+    }
+    .navigator.active .toggle::after{
+        transform: translateY(0px) rotate(225deg);
+    }
+    .navigator ul{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .navigator ul li{
+        position: relative;
+        list-style: none;
+        width: 100%;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        margin-left: 1rem;
+        /* background-color: #fff; */
+    }
+    .navigator ul li:hover{
+        width: 100%;
+        border-right: 120px;
+        background-color: #fff;
+        color: black;
+        margin-left: 2rem;
+    }
+    .navigator ul li:nth-child(1){
+        top: 20px;
+        margin-bottom: 60px;
+        background: none;
+    }
+    
+    .navigator ul li:hover:not(:first-child) a{
+        color: rgb(97, 97, 97);
+    }
+    
+    .navigator ul li:not(:first-child):hover::before{
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border-bottom-right-radius: 20px;
+        box-shadow: 7.5px 7.5px 0px 7.5px white;
+    }
+    .navigator ul li:not(:first-child):hover::after{
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border-top-right-radius: 20px;
+        box-shadow: 7.5px -7.5px 0px 7.5px white;
+    }
+    .navigator ul li a{
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: white;
+    
+    }
+    .navigator ul li a .icono{
+        position: relative;
+        display: block;
+        min-width: 60px;
+        height: 60px;
+        line-height: 70px;
+        text-align: start;
+    }
+    .navigator ul li a .icono ion-icon{
+        font-size: 1.5rem;
+        margin-left: 0.5rem;
+    }
+    .navigator ul li a .titulo{
+        position: relative;
+        display: block;
+        padding: 0px 10px;
+        height: 60px;
+        line-height: 60px;
+        text-align: start;
+        white-space: nowrap;
+    }
+}

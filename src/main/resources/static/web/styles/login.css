@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    background-image: url('https://assets-global.website-files.com/5f4f67c5950db17954dd4f52/5f5b7704da8b97990b5107fa_tipos-de-banco.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    display: flex;
+    justify-content: end;
+}
+
+.contenedor-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 43rem;
+    background-color: rgba(60, 181, 169, 0.537);
+}
+.input input{
+    width: 20rem !important;
+
+}
+.contenedor-formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-family: 'Numans', sans-serif;
+    background-color: rgb(185, 224, 230);
+    border: 10px solid rgb(62,107,253);
+    width: 25rem;
+    height: 30rem;
+}
+.contenedor-formulario form input{
+    margin-top: 2
+1rem;
+}
