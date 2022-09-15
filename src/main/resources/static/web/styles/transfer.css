@@ -29,13 +29,11 @@
   background-color: white;
 }
 .wrapper{
-  margin-top: 10rem;
     overflow: hidden;
     max-width: 490px;
     background: #fff;
     padding: 30px;
     border-radius: 5px;
-    margin-bottom: 10rem;
     
 }
 .wrapper .title-text{

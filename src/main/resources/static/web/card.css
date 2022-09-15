@@ -3,6 +3,29 @@
     padding:0;
     box-sizing: border-box;
 }
+
+.txt-card{
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.463) ;
+    margin-left: 2rem;
+    border-radius: 20px;
+}
+.txt-card h2{
+    background-color: #67b9b1 ;
+    width: 15rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.txt-card img{
+    width: 20rem;
+    border-radius: 20px;
+}
 .contenedor-tarjeta-boton{
     margin: 3rem;
     margin-bottom: 5rem;
@@ -383,9 +406,12 @@
     flex-wrap: wrap;
     overflow: hidden;
     overflow-y: scroll;
-    height: 50rem;
+    height: 40rem;
     border-radius: 20px;
     
+}
+.contenedor-info{
+    display: flex;
 }
 .contenedor-principal::-webkit-scrollbar{
     width: 10px;
@@ -397,6 +423,9 @@
     background-color: rgb(97, 97, 97);
 }
 @media (max-width: 768px) {
+    .txt-card{
+        display: none;
+    }
     .btnn{
         align-self: start;
         display: flex;
@@ -556,7 +585,10 @@
         white-space: nowrap;
     }
 }
-@media (max-width: 425px) {
+@media (max-width: 424px) {
+    .txt-card{
+        display: none;
+    }
     .delete{
         width: 3rem;
         height: 3rem;
@@ -640,6 +672,20 @@
         margin-left: 0.5rem;
     }
     .contenedor-principal{
+        background-color: rgba(255, 255, 255, 0.466);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: hidden;
+        overflow-y: scroll;
+        height: 40rem;
+        border-radius: 20px;
+        width: 14rem !important;
+        
+    }
+    .contenedor-principal{
         background-color: none;
         display: flex;
         flex-direction: row;
@@ -650,7 +696,7 @@
         overflow-y: scroll;
         height: 45rem;
         margin-left: 7rem !important;
-        width: 18rem !important;
+        
         border-radius: 20px;
     }
     .carta {

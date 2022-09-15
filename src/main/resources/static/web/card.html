@@ -15,72 +15,81 @@
 
     <div id="app">
         
-                <div class="principal">
+            <div class="principal">
                     
                     <div class="cnt">
                         <div class="contenedor-botones">
                             <a class="btnn" href="./createCard.html"><i class="fa-solid fa-plus"></i> <p>create card</p> </a>
                         </div>
-                        <div class="container contenedor-principal" >
+                        <div class="contenedor-info">
+                            <div class="container contenedor-principal" >
                             
                             
-                            <div class="contenedor-tarjeta-boton" v-for="card in cards">
-
-                                <div  class="carta">
-                                
-                                    <div :class="[card.color == 'NORMAL' ? 'view front tarjeta-normal' : card.color == 'SILVER' ? 'view front tarjeta-silver' : card.color == 'GOLD' ? 'view front tarjeta-gold' : 'view front tarjeta-platinum'] ">
-                                        
-                                        <div class="contenido-frente-datos">
-                                            <div>
-                                                
-                                            </div>
-                                            <div class="contenedor-numero">
-                                                <h3>{{card.number}}</h3>
+                                <div class="contenedor-tarjeta-boton" v-for="card in cards">
+    
+                                    <div  class="carta">
+                                    
+                                        <div :class="[card.color == 'NORMAL' ? 'view front tarjeta-normal' : card.color == 'SILVER' ? 'view front tarjeta-silver' : card.color == 'GOLD' ? 'view front tarjeta-gold' : 'view front tarjeta-platinum'] ">
+                                            
+                                            <div class="contenido-frente-datos">
                                                 <div>
-                                                    <h6>{{card.color}}</h6>
-                                                    <h6>{{card.type}}</h6>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="contenedor-datos">
-                                                <div class="fechas">
-                                                    
-                                                    <div v-if="card.fromDate.split('-')[0] > Date">
-                                                        <p class="text-danger" >{{card.thruDate}}</p>
-                                                    </div>
-                                                    <div v-else>
-                                                        <p >{{card.thruDate}}</p>
-                                                    </div>
-                                                    <div v-if="card.fromDate.split('-')[0] > Date">
-                                                        <p class="text-danger" >{{card.fromDate}}</p>
-                                                    </div>
-                                                    <div v-else>
-                                                        <p >{{card.fromDate}}</p>
-                                                    </div>
-                                                   
                                                     
                                                 </div>
-                                                
-                                                <p class="name">{{card.cardHolder}}</p>
+                                                <div class="contenedor-numero">
+                                                    <h3>{{card.number}}</h3>
+                                                    <div>
+                                                        <h6>{{card.color}}</h6>
+                                                        <h6>{{card.type}}</h6>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="contenedor-datos">
+                                                    <div class="fechas">
+                                                        
+                                                        <div v-if="card.fromDate.split('-')[0] > Date">
+                                                            <p class="text-danger" >{{card.thruDate}}</p>
+                                                        </div>
+                                                        <div v-else>
+                                                            <p >{{card.thruDate}}</p>
+                                                        </div>
+                                                        <div v-if="card.fromDate.split('-')[0] > Date">
+                                                            <p class="text-danger" >{{card.fromDate}}</p>
+                                                        </div>
+                                                        <div v-else>
+                                                            <p >{{card.fromDate}}</p>
+                                                        </div>
+                                                       
+                                                        
+                                                    </div>
+                                                    
+                                                    <p class="name">{{card.cardHolder}}</p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div  class="view back">
+                                            <div>
+                                                <h4>
+                                                    {{card.cvv}}
+                                                </h4>
                                             </div>
                                         </div>
-                                        
                                     </div>
-                                    <div  class="view back">
-                                        <div>
-                                            <h4>
-                                                {{card.cvv}}
-                                            </h4>
-                                        </div>
+                                    <div class="delete" @click="deleteCard(card.id)">
+                                        <ion-icon name="trash"></ion-icon>
                                     </div>
                                 </div>
-                                <div class="delete" @click="deleteCard(card.id)">
-                                    <ion-icon name="trash"></ion-icon>
-                                </div>
+                                
                             </div>
-                            
+                            <div class="txt-card">
+                                <h2>Preferred Rewards makes your credit card even better</h2>
+                                <p>When you enroll in the Preferred Rewards program, you can get a 25% — 75% rewards bonus on all eligible MEDIBANK credit cards.</p>
+                                <P>Plus, as a Preferred Rewards member, you enjoy real benefits and rewards on your everyday Bank of America® banking and Merrill investment accounts. And as your qualifying balances grow, so do your benefits.</P>
+                                <img src="https://thumbs.dreamstime.com/b/glad-happy-female-person-holding-credit-card-standing-blue-background-glad-happy-female-person-holding-credit-card-169122030.jpg" alt="">
+                            </div>
                         </div>
-                </div>
+                        
+                    </div>
 
                 
                 

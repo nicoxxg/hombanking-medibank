@@ -55,6 +55,39 @@ public class HombankingApplication {
 			Card card1 = new Card("Melba Morel",CardType.DEBIT,CardColor.GOLD,"5412 7512 3412 3456",123,thruDate,fromDate,true,client1);
 
 			cardRepository.save(card1);
+
+			LocalDateTime date = LocalDateTime.now();
+
+			Transaction transaction2 = new Transaction(TransactionType.CREDITO,200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction2);
+			Transaction transaction3 = new Transaction(TransactionType.CREDITO,210.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction3);
+			Transaction transaction4 = new Transaction(TransactionType.CREDITO,5200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction4);
+			Transaction transaction5 = new Transaction(TransactionType.CREDITO,3200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction5);
+			Transaction transaction6 = new Transaction(TransactionType.CREDITO,2030.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction6);
+			Transaction transaction7 = new Transaction(TransactionType.CREDITO,1200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction7);
+			Transaction transaction8 = new Transaction(TransactionType.CREDITO,1200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction8);
+			Transaction transaction9 = new Transaction(TransactionType.CREDITO,20.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction9);
+			Transaction transaction10 = new Transaction(TransactionType.CREDITO,2200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction10);
+			Transaction transaction11 = new Transaction(TransactionType.CREDITO,1200.02,"transaccion hecha a pepe",date,account1,true);
+
+			transactionRepository.save(transaction11);
 			/*
 			Client client2 = new Client("melba2","morel2","melba2@gmail.com", passwordEncoder.encode("melba2"));
 
@@ -92,7 +125,7 @@ public class HombankingApplication {
 
 			accountrepository.save(account3);
 
-			LocalDateTime date = LocalDateTime.now();
+
 
             Transaction transaction1 = new Transaction(TransactionType.DEBITO,-1200.02,"transaccion hecha a pepe",date,account1);
 

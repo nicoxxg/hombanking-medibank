@@ -51,8 +51,8 @@ public class TransactionController {
         if (numberOrigin.equals(numberDestiny)){
             return new ResponseEntity<>("the account you are entering is equal to destination account", HttpStatus.FORBIDDEN);
         }
-        if (amount == 0){
-            return new ResponseEntity<>("you can not transfer 0 dollars", HttpStatus.FORBIDDEN);
+        if (amount <= 0){
+            return new ResponseEntity<>("you can not transfer 0 dollars or negative numbers", HttpStatus.FORBIDDEN);
         }
         if (accountOrigin == null){
             return new ResponseEntity<>("the account entered does not exist", HttpStatus.FORBIDDEN);

@@ -13,8 +13,26 @@ body{
     height: 100vh;
 }
 #balance{
-    width: 10rem;
-    height: 20rem;
+    width: 25rem;
+    height: 14rem;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.balance{
+    width: 25rem;
+    height: 3rem;
+    background-color: #a4a5a7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.4rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-shadow: 1px 0px 2px rgb(255, 255, 255);
+}
+.totalbalance{
+    margin-bottom: 3rem;
 }
 .btnn{
     border: 1px solid rgb(170, 170, 170);
@@ -24,10 +42,11 @@ body{
     align-items: center;
     text-decoration: none;
     width: 20rem;
-    height: 4.5rem;
+    height: 3.5rem;
     border-radius: 25px;
     background-color: #fff;
     font-size: 1.5rem;
+    margin-left: 2rem;
     cursor: pointer;
 }
 .btnn p{
@@ -39,7 +58,7 @@ body{
     overflow: hidden;
     overflow-y: scroll;
     height: 26rem;
-    width: 18rem;
+    width: 14rem;
     margin-left: 2rem;
 }
 .contenedor-loans{
@@ -49,11 +68,12 @@ body{
     font-size: 0.7rem;
     margin-bottom: 4rem;
     margin-top: 2rem;
-    height: 26rem;
-    width: 23rem;
+    height: 20rem;
+    width: 17rem;
     scrollbar-base-color: black;
     display: flex;
     justify-content: center;
+    text-align: center;
     align-items: center;
     background-color: #67b9b1;
     color: white;
@@ -71,7 +91,7 @@ body{
 .loans-container{
     margin-top: 2rem;
     border-radius: 10px;
-    width: 15rem;
+    width: 12rem;
     height: 8rem;
     text-align: center;
     background-color: white;
@@ -103,7 +123,6 @@ body{
 }
 .datos-usuario{
     width: 100%;
-    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -113,11 +132,12 @@ body{
 .datos-container{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     border: 1px solid rgb(180, 180, 180);
     border-radius: 10px;
     margin: 3rem;
-    width: 80rem;
-    height: 51rem;
+    width: 67rem;
+    height: 27rem;
     background-color: white;
 }
 .contenedor-principal{
@@ -170,40 +190,41 @@ body{
 }
 .plata{
     border: 1px solid rgb(180, 180, 180);
-    width: 25rem;
-    height: 15rem;
+    width: 20rem;
+    height: 10rem;
     background-color: rgba(255, 255, 255, 0.772);
-    margin: 2rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
     border-radius: 10px;
-
 }
 .plata h2{
     text-align: center;
     text-align: 2rem;
 }
 .plata-datos h2{
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 }
 .plata h3{
     text-align: center;
 }
+.plata-datos h3{
+    font-size: 1.2rem;
+}
 .plata div h4{
-    font-size: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
 }
 .plata a{
     border-radius: 20px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: black;
-    margin-top: 1rem;
+    background-color: #67b9b1;
     text-decoration: none;
     height: 2rem;
     width: 10rem;
@@ -223,8 +244,8 @@ body{
     align-items: center;
     font-size: 2rem;
     position: absolute;
-    margin-left: 20rem;
-    margin-bottom: 10rem;
+    margin-left: 15rem;
+    margin-bottom: 6rem;
     border: 1px solid black;
     border-radius: 50px;
     transition: 0.3s;
@@ -237,7 +258,10 @@ body{
     color: red;
     border: 1px solid red;
 }
-
+.tablas{
+    margin-left: 4rem;
+    
+}
 
 
 
@@ -412,7 +436,9 @@ body{
 }
 
 @media (max-width: 425px) {
-    
+    .tablas{
+        margin-left: 6rem;
+    }
     .delete{
         width: 3rem;
         height: 3rem;

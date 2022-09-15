@@ -41,8 +41,8 @@ public class LoanController {
         if (loanApplicationDTO.getLoanId() == 0 || loanApplicationDTO.getNumber().isEmpty()){
             return new ResponseEntity<>("please complete the data",HttpStatus.FORBIDDEN);
         }
-        if (loanApplicationDTO.getAmount() == 0 ){
-            return new ResponseEntity<>("please enter an amount other than 0",HttpStatus.FORBIDDEN);
+        if (loanApplicationDTO.getAmount() <= 0 ){
+            return new ResponseEntity<>("please enter an amount other than 0 or negative number",HttpStatus.FORBIDDEN);
         }
         if (loanApplicationDTO.getPayments() == 0){
             return new ResponseEntity<>("que intentas hacer poniendo 0 cuotas?",HttpStatus.FORBIDDEN);

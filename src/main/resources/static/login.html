@@ -124,6 +124,11 @@
     
 
     function checkPassword(data){
+        let dat = data.split("")
+        if (dat.includes(["a", "b", "c", "d","e"])) {
+            console.log("funciona")
+        }
+        console.log();
         const lower = new RegExp('(?=.*[a-z])')
         const upper = new RegExp('(?=.*[A-Z])')
         const number = new RegExp('(?=.*[0-9])')

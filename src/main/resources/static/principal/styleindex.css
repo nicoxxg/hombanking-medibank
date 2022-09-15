@@ -32,7 +32,7 @@ header{
     font-size: 1.5rem;
 
 }
-.usuario-container div a{
+.contenedor-sesion a{
     background-color: rgb(60,181,169);
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@ header{
     text-decoration: none;
     transition: 0.5s;
 }
-.usuario-container div a:hover{
+.contenedor-sesion a:hover{
     background-color: rgb(56,105,225);
     color: white !important;
 }
@@ -58,11 +58,14 @@ header{
     display: flex;
 }
 .backgrande{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 40rem;
     background-color: #3cb5a9;
     background-image: url(https://www.bbva.com.ar/content/dam/public-web/argentina/images/seo_modo/Manos.gif);
     background-position: 50%;
+    background-position-y: 60%;
     background-repeat: no-repeat;
     position: relative;
 }
@@ -85,11 +88,25 @@ header{
         background-position-x: 1000px;
     }
 }
+.tittle{
+    width: 60rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    margin-bottom: 3rem;
+    border-radius: 30px;
+    text-align: center;
+    background-color: #57c6bb51;
+
+}
 .contenedor-txt{
     height: 55rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background: linear-gradient(to top, #d6e1fc,white,white,white);
     
 
@@ -97,6 +114,7 @@ header{
 .contenedor-txt h3{
     display: flex;
     justify-content: center;
+    
     width: 30rem;
     height: 3rem;
     align-items: center;

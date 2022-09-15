@@ -77,9 +77,10 @@
                 </div>
             </div>
             
-                <h1>your transactions</h1>
+                
 
                 <div class="tablas ">
+                    <h1>your transactions</h1>
                     <div class="container table-responsive py-5"> 
                         <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
@@ -156,8 +157,10 @@
                 myChart.data['labels'].push(response.type)
                 if (response.type == "CREDITO") {
                     myChart.data['datasets'][0].data.push(response.amount)
-                }else{
+                }else if(response.type == "DEBITO") {
                     myChart.data['datasets'][1].data.push(response.amount)
+                }else{
+                    myChart.data['datasets'][0].data.push(response.amount)
                 }
                 
             });
